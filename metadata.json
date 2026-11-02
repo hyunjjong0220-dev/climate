@@ -1,0 +1,8 @@
+{
+  "name": "Remix 에코 가디언: 기후위기 탈출 대모험",
+  "description": "기상청·산림청 2010~2022 실측 데이터(산림면적·지구평균기온·CO2) 기반의 픽셀 아트 교육용 기후 액션 플랫폼 게임",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

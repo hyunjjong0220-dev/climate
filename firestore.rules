@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidHallOfFame(data) {
+      return data.nickname is string &&
+             data.nickname.size() >= 1 &&
+             data.nickname.size() <= 40 &&
+             data.stage is number &&
+             data.stage >= 1 &&
+             data.stage <= 500 &&
+             data.score is number &&
+             data.score >= 0 &&
+             data.updatedAt is string &&
+             data.updatedAt.size() <= 100;
+    }
+
+    match /hall_of_fame/{recordId} {
+      allow get, list: if true;
+      allow create: if isValidId(recordId) && isValidHallOfFame(request.resource.data);
+      allow update: if isValidId(recordId) && isValidHallOfFame(request.resource.data);
+      allow delete: if false;
+    }
+  }
+}

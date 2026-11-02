@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Galmuri11', 'DungGeunMo', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Crisp Retro Pixel Art Rendering */
+canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Print optimizations for Certificate */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  header, footer, canvas, .print\:hidden {
+    display: none !important;
+  }
+
+  #printable-certificate {
+    box-shadow: none !important;
+    border: 3px double #b45309 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 800px !important;
+    page-break-inside: avoid !important;
+  }
+}

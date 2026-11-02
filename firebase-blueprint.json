@@ -1,0 +1,64 @@
+{
+  "entities": {
+    "HallOfFameRecord": {
+      "title": "HallOfFameRecord",
+      "description": "Cumulative student game progress and completion record for Hall of Fame leaderboard",
+      "type": "object",
+      "properties": {
+        "nickname": {
+          "type": "string",
+          "description": "Student nickname",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "stage": {
+          "type": "number",
+          "description": "Highest stage reached or cleared"
+        },
+        "score": {
+          "type": "number",
+          "description": "Accumulated game score"
+        },
+        "treesPlanted": {
+          "type": "number",
+          "description": "Total trees planted"
+        },
+        "coins": {
+          "type": "number",
+          "description": "Coins collected"
+        },
+        "badge": {
+          "type": "string",
+          "description": "Honor title or badge name",
+          "maxLength": 50
+        },
+        "certificateNo": {
+          "type": "string",
+          "description": "Unique certificate identifier",
+          "maxLength": 60
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether level 5 completion was achieved"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update",
+          "maxLength": 100
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of creation",
+          "maxLength": 100
+        }
+      },
+      "required": ["nickname", "stage", "score", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/hall_of_fame/{recordId}": {
+      "schema": "HallOfFameRecord",
+      "description": "Cumulative classroom student records for Hall of Fame leaderboard"
+    }
+  }
+}
